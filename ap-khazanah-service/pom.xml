@@ -70,6 +70,15 @@
         </repository>
     </repositories>
 
+    <profiles>
+        <profile>
+            <id>openshift</id>
+            <build>
+                <directory>../target/</directory>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
