@@ -15,9 +15,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>corp.bi.go.id</groupId>
+            <groupId>com.github.firzagustama.ap-plugin</groupId>
             <artifactId>ap-plugin-facade</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -81,6 +81,22 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <profiles>
+        <profile>
+            <id>openshift</id>
+            <build>
+                <directory>../target/</directory>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -89,13 +105,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>openshift</id>
-            <build>
-                <directory>../target</directory>
-            </build>
-        </profile>
-    </profiles>
 </project>
