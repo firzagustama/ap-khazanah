@@ -1,9 +1,6 @@
 package corp.bi.go.id.ap.khazanah.service;
 
-import corp.bi.go.id.ap.khazanah.grpc.KhazanahRequest;
-import corp.bi.go.id.ap.khazanah.grpc.KhazanahResponse;
-import corp.bi.go.id.ap.khazanah.grpc.KhazanahServiceGrpc;
-import corp.bi.go.id.ap.khazanah.grpc.UpdateOrderQuotaRequest;
+import corp.bi.go.id.ap.khazanah.grpc.*;
 import corp.bi.go.id.ap.khazanah.model.Khazanah;
 import corp.bi.go.id.ap.plugin.helper.JsonUtil;
 import io.grpc.stub.StreamObserver;
@@ -52,6 +49,12 @@ public class KhazanahService extends KhazanahServiceGrpc.KhazanahServiceImplBase
                 .filter(k -> k.getId().equalsIgnoreCase(request.getId()))
                 .findFirst()
                 .orElse(KhazanahResponse.newBuilder().build()));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getAllKhazanah(AllKhazanahRequest request, StreamObserver<AllKhazanahResponse> responseObserver) {
+        responseObserver.onNext(AllKhazanahResponse.newBuilder().addAllKhazanah(db).build());
         responseObserver.onCompleted();
     }
 
